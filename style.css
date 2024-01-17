@@ -1,0 +1,90 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	min-height: 100vh;
+	background-color: #f4f4f4;
+}
+.kanban-board {
+	display: flex;
+	overflow-x: auto;
+	padding: 20px;
+}
+.column {
+	flex: 1;
+	min-width: 250px;
+	border-radius: 5px;
+	margin-right: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	box-sizing: border-box;
+}
+.backlog {
+	background-color: #fff;
+	border: 2px solid #3498db;
+}
+.backlog .column-header {
+	color: #3498db;
+}
+.todo {
+	background-color: #fff;
+	border: 2px solid #2ecc71;
+}
+.todo .column-header {
+	color: #2ecc71;
+}
+.inprogress {
+	background-color: #fff;
+	border: 2px solid #e74c3c;
+}
+.inprogress .column-header {
+	color: #e74c3c;
+}
+.done {
+	background-color: #fff;
+	border: 2px solid #f39c12;
+}
+.done .column-header {
+	color: #f39c12;
+}
+.column-header {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.task {
+	background-color: #e0e0e0;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+	cursor: grab;
+	transition: transform 0.3s ease-in-out;
+	display: flex;
+}
+.task.dragging {
+	transform: scale(1.1);
+}
+.task .task-image-column {
+	width: 100px;
+	margin-right: 10px;
+	background-color: #ccc;
+}
+.task .task-image {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+.task .task-details {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.task .task-title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.task .task-details-text {
+	font-size: 14px;
+}

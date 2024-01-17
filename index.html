@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="kanban-board">
+        <div class="column backlog" ondrop="drop(event)" ondragover="allowDrop(event)" id="backlog-column">
+            <div class="column-header">Backlog</div>
+        </div>
+
+        <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)" id="todo-column">
+            <div class="column-header">To do</div>
+        </div>
+
+        <div class="column inprogress" ondrop="drop(event)" ondragover="allowDrop(event)" id="inprogress-column">
+            <div class="column-header">In Progress</div>
+        </div>
+
+        <div class="column done" ondrop="drop(event)" ondragover="allowDrop(event)" id="done-column">
+            <div class="column-header">Done</div>
+        </div>
+        <script src="index.js"></script>
+</body>
+
+</html>
