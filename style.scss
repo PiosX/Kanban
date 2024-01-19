@@ -3,21 +3,133 @@ body {
 	margin: 0;
 	padding: 0;
 	display: flex;
-	min-height: 100vh;
+	flex-direction: column;
+	height: 100vh;
 	background-color: #f4f4f4;
 }
 
-.kanban-board {
+.kanban-board,
+.kanban-container {
 	display: flex;
-	overflow-x: auto;
+	gap: 25px;
+	height: 100%;
 	padding: 20px;
+}
+
+.kanban-container {
+	flex-direction: column;
+}
+
+.kanban-button {
+	text-align: center;
+
+	button,
+	#form-submit,
+	#form-close {
+		font-size: 20px;
+		color: #fff;
+		font-weight: 600;
+		padding: 12px 24px;
+		border: 1px solid royalblue;
+		border-radius: 5px;
+		background-color: royalblue;
+		transition: 0.3s background-color, 0.3s color;
+
+		&:hover {
+			cursor: pointer;
+			color: royalblue;
+			background-color: #fff;
+		}
+	}
+}
+
+#form-submit,
+#form-close {
+	font-size: 20px;
+	color: #fff;
+	font-weight: 600;
+	padding: 12px 24px;
+	border: 1px solid royalblue;
+	border-radius: 5px;
+	background-color: royalblue;
+	transition: 0.3s background-color, 0.3s color;
+	z-index: 5;
+
+	&:hover {
+		cursor: pointer;
+		color: royalblue;
+		background-color: #fff;
+	}
+}
+
+#form-submit {
+	margin-top: 25px;
+	width: 100%;
+}
+
+#form-close {
+	position: absolute;
+	top: 50px;
+	right: 50px;
+}
+
+.kanban-form-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+
+	&.active-modal {
+		display: flex;
+	}
+
+	.kanban-form-background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.95;
+		background-color: #000;
+		z-index: 1;
+	}
+
+	form {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		max-width: 30%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 5;
+
+		label {
+			width: 100%;
+			text-align: left;
+			color: #fff;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+
+		input {
+			height: 30px;
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			resize: none;
+		}
+	}
 }
 
 .column {
 	flex: 1;
 	min-width: 250px;
 	border-radius: 5px;
-	margin-right: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 15px;
 	box-sizing: border-box;
@@ -69,6 +181,10 @@ body {
 	cursor: grab;
 	transition: transform 0.3s ease-in-out;
 	display: flex;
+
+	&:active {
+		cursor: grabbing;
+	}
 
 	&.dragging {
 		transform: scale(1.1);
