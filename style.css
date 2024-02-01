@@ -1,209 +1,209 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f4f4f4;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: #f4f4f4;
 }
 
 .kanban-board,
 .kanban-container {
-  display: flex;
-  gap: 25px;
-  height: 100%;
-  padding: 20px;
+	display: flex;
+	gap: 25px;
+	height: 100%;
+	padding: 20px;
 }
 
 .kanban-container {
-  flex-direction: column;
+	flex-direction: column;
 }
 
 .kanban-button {
-  text-align: center;
+	text-align: center;
 }
 .kanban-button button,
 .kanban-button #form-submit,
 .kanban-button #form-close {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: 1px solid royalblue;
-  border-radius: 5px;
-  background-color: royalblue;
-  transition: 0.3s background-color, 0.3s color;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 600;
+	padding: 12px 24px;
+	border: 1px solid royalblue;
+	border-radius: 5px;
+	background-color: royalblue;
+	transition: 0.3s background-color, 0.3s color;
 }
 .kanban-button button:hover,
 .kanban-button #form-submit:hover,
 .kanban-button #form-close:hover {
-  cursor: pointer;
-  color: royalblue;
-  background-color: #fff;
+	cursor: pointer;
+	color: royalblue;
+	background-color: #fff;
 }
 
 #form-submit,
 #form-close {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: 1px solid royalblue;
-  border-radius: 5px;
-  background-color: royalblue;
-  transition: 0.3s background-color, 0.3s color;
-  z-index: 5;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 600;
+	padding: 12px 24px;
+	border: 1px solid royalblue;
+	border-radius: 5px;
+	background-color: royalblue;
+	transition: 0.3s background-color, 0.3s color;
+	z-index: 5;
 }
 #form-submit:hover,
 #form-close:hover {
-  cursor: pointer;
-  color: royalblue;
-  background-color: #fff;
+	cursor: pointer;
+	color: royalblue;
+	background-color: #fff;
 }
 
 #form-submit {
-  margin-top: 25px;
-  width: 100%;
+	margin-top: 25px;
+	width: 100%;
 }
 
 #form-close {
-  position: absolute;
-  top: 50px;
-  right: 50px;
+	position: absolute;
+	top: 50px;
+	right: 50px;
 }
 
 .kanban-form-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
 }
 .kanban-form-container.active-modal {
-  display: flex;
+	display: flex;
 }
 .kanban-form-container .kanban-form-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.95;
-  background-color: #000;
-  z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0.95;
+	background-color: #000;
+	z-index: 1;
 }
 .kanban-form-container form {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 5;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
 }
 .kanban-form-container form label {
-  width: 100%;
-  text-align: left;
-  color: #fff;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+	width: 100%;
+	text-align: left;
+	color: #fff;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 .kanban-form-container form input {
-  height: 30px;
+	height: 30px;
 }
 .kanban-form-container form input,
 .kanban-form-container form textarea {
-  width: 100%;
-  resize: none;
+	width: 100%;
+	resize: none;
 }
 
 .column {
-  flex: 1;
-  min-width: 250px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  box-sizing: border-box;
+	flex: 1;
+	min-width: 250px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	box-sizing: border-box;
 }
 
 .backlog {
-  background-color: #fff;
-  border: 2px solid #3498db;
+	background-color: #fff;
+	border: 2px solid #3498db;
 }
 .backlog .column-header {
-  color: #3498db;
+	color: #3498db;
 }
 
 .todo {
-  background-color: #fff;
-  border: 2px solid #2ecc71;
+	background-color: #fff;
+	border: 2px solid #2ecc71;
 }
 .todo .column-header {
-  color: #2ecc71;
+	color: #2ecc71;
 }
 
 .inprogress {
-  background-color: #fff;
-  border: 2px solid #e74c3c;
+	background-color: #fff;
+	border: 2px solid #e74c3c;
 }
 .inprogress .column-header {
-  color: #e74c3c;
+	color: #e74c3c;
 }
 
 .done {
-  background-color: #fff;
-  border: 2px solid #f39c12;
+	background-color: #fff;
+	border: 2px solid #f39c12;
 }
 .done .column-header {
-  color: #f39c12;
+	color: #f39c12;
 }
 
 .column-header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 .task {
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: grab;
-  transition: transform 0.3s ease-in-out;
-  display: flex;
+	background-color: #e0e0e0;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+	cursor: grab;
+	transition: transform 0.3s ease-in-out;
+	display: flex;
 }
 .task:active {
-  cursor: grabbing;
+	cursor: grabbing;
 }
 .task.dragging {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 .task .task-image-column {
-  width: 100px;
-  margin-right: 10px;
-  background-color: #ccc;
+	width: 100px;
+	margin-right: 10px;
+	background-color: #ccc;
 }
 .task .task-image {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
 }
 .task .task-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 .task .task-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 .task .task-details-text {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 /*# sourceMappingURL=style.css.map */
