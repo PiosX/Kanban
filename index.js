@@ -143,12 +143,10 @@ const checkForm = (items) => {
 };
 
 const saveTasksToLocalStorage = () => {
-	console.log("Saving tasks to local storage");
 	localStorage.setItem("kanbanTasks", JSON.stringify(allTasks));
 };
 
 const loadTasksFromLocalStorage = () => {
-	console.log("Loading tasks from local storage");
 	const storedTasks = localStorage.getItem("kanbanTasks");
 	if (storedTasks) {
 		allTasks = JSON.parse(storedTasks);
