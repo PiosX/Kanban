@@ -157,8 +157,7 @@ const loadTasksFromLocalStorage = () => {
 			if (taskData) {
 				const { title, desc, date, priority, selectedValue, columnId } =
 					taskData;
-				const targetColumnId =
-					columnId || getColumnIdByPriority(priority);
+				const targetColumnId = columnId || getColumnIdByPriority("");
 
 				const targetColumn = document.getElementById(targetColumnId);
 				if (targetColumn) {
