@@ -4,28 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tablica Kanban</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div class="kanban-board">
-        <div class="column backlog" ondrop="drop(event)" ondragover="allowDrop(event)" id="backlog-column">
-            <div class="column-header">Backlog</div>
+    <div class="kanban-container">
+        <div class="kanban-button">
+            <h1>Tablica Kanban - projekt zaliczeniowy</h1>
+            <button type="button" id="form-modal">Dodaj zadanie</button>
         </div>
+        <div class="kanban-board">
+            <div class="column backlog" ondrop="drop(event)" ondragover="allowDrop(event)" id="backlog-column">
+                <div class="column-header">Backlog</div>
+                <div class="column-body" id="backlog-column-body">
+                </div>
+            </div>
 
-        <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)" id="todo-column">
-            <div class="column-header">To do</div>
-        </div>
+            <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)" id="todo-column">
+                <div class="column-header">Do zrobienia</div>
+                <div class="column-body"></div>
+            </div>
 
-        <div class="column inprogress" ondrop="drop(event)" ondragover="allowDrop(event)" id="inprogress-column">
-            <div class="column-header">In Progress</div>
-        </div>
+            <div class="column inprogress" ondrop="drop(event)" ondragover="allowDrop(event)" id="inprogress-column">
+                <div class="column-header">W trakcie prac</div>
+                <div class="column-body"></div>
+            </div>
 
-        <div class="column done" ondrop="drop(event)" ondragover="allowDrop(event)" id="done-column">
-            <div class="column-header">Done</div>
+            <div class="column done" ondrop="drop(event)" ondragover="allowDrop(event)" id="done-column">
+                <div class="column-header">Zakończone</div>
+                <div class="column-body"></div>
+            </div>
         </div>
-        <script src="index.js"></script>
+    </div>
+    <div class="kanban-form-container" id="kanban-form-modal">
+        <div class="kanban-form-background"></div>
+        <form class="kanban-form" id="form">
+            <h1>Nowe zadanie</h1>
+            <label for="nazwa">Nazwa zadania</label>
+            <input type="text" name="nazwa" class="kanban-input" id="title-field" value="">
+            <label for="opis">Opis zadania</label>
+            <textarea name="opis" cols="30" rows="10" class="kanban-textarea" id="textarea-field"></textarea>
+            <label for="termin">Termin</label>
+            <input type="date" name="termin" class="kanban-input" id="date-field">
+            <label for="priorytet">Priorytet zadania</label>
+            <select name="priorytet" id="select-field">
+                <option value="3">Wysoki</option>
+                <option value="2">Średni</option>
+                <option value="1" selected>Niski</option>
+            </select>
+            <p class="form-fail"></p>
+            <button type="submit" id="form-submit">Dodaj</button>
+        </form>
+        <button type="button" id="form-close">Zamknij</button>
+    </div>
+    <footer>Autorzy: Jakub Jurgiel i Piotr Daraszkiewicz, WSE III rok, Informatyka Stosowana 1 Stopnia</footer>
+    <script src=" index.js"></script>
 </body>
 
 </html>

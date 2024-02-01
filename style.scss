@@ -3,53 +3,190 @@ body {
 	margin: 0;
 	padding: 0;
 	display: flex;
-	min-height: 100vh;
+	flex-direction: column;
+	height: 100vh;
 	background-color: #f4f4f4;
 }
 
-.kanban-board {
+.kanban-board,
+.kanban-container {
 	display: flex;
-	overflow-x: auto;
+	gap: 25px;
+	height: 100%;
 	padding: 20px;
+}
+
+.kanban-container {
+	flex-direction: column;
+}
+
+.kanban-button {
+	text-align: center;
+
+	button,
+	#form-submit,
+	#form-close {
+		font-size: 20px;
+		color: #fff;
+		font-weight: 600;
+		padding: 12px 24px;
+		border: 1px solid royalblue;
+		border-radius: 5px;
+		background-color: royalblue;
+		transition: 0.3s background-color, 0.3s color;
+
+		&:hover {
+			cursor: pointer;
+			color: royalblue;
+			background-color: #fff;
+		}
+	}
+}
+
+#form-submit,
+#form-close {
+	font-size: 20px;
+	color: #fff;
+	font-weight: 600;
+	padding: 12px 24px;
+	border: 1px solid royalblue;
+	border-radius: 5px;
+	background-color: royalblue;
+	transition: 0.3s background-color, 0.3s color;
+	z-index: 5;
+
+	&:hover {
+		cursor: pointer;
+		color: royalblue;
+		background-color: #fff;
+	}
+}
+
+#form-submit {
+	margin-top: 25px;
+	width: 100%;
+}
+
+#form-close {
+	position: absolute;
+	top: 50px;
+	right: 50px;
+}
+
+.kanban-form-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+
+	&.active-modal {
+		display: flex;
+	}
+
+	.kanban-form-background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.85;
+		background-color: #000;
+		z-index: 1;
+	}
+
+	form {
+		position: relative;
+		width: 100%;
+		height: fit-content;
+		max-width: 30%;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 5;
+		background-color: #fff;
+		padding: 45px;
+
+		label {
+			width: 100%;
+			text-align: left;
+			color: #000;
+			font-weight: 600;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+
+		input {
+			height: 30px;
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			resize: none;
+		}
+
+		select {
+			width: 100%;
+			height: 35px;
+		}
+
+		.form-fail {
+			display: none;
+			width: 100%;
+			text-align: center;
+			padding: 10px 0;
+			background-color: #e74c3c;
+			color: #fff;
+			font-weight: 600;
+			border-radius: 5px;
+
+			&.active {
+				display: block;
+			}
+		}
+	}
 }
 
 .column {
 	flex: 1;
 	min-width: 250px;
 	border-radius: 5px;
-	margin-right: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 15px;
 	box-sizing: border-box;
+	border-top: 20px solid transparent;
 }
 
 .backlog {
+	border-color: #3498db;
 	background-color: #fff;
-	border: 2px solid #3498db;
 	.column-header {
 		color: #3498db;
 	}
 }
 
 .todo {
+	border-color: #2ecc71;
 	background-color: #fff;
-	border: 2px solid #2ecc71;
 	.column-header {
 		color: #2ecc71;
 	}
 }
 
 .inprogress {
+	border-color: #e74c3c;
 	background-color: #fff;
-	border: 2px solid #e74c3c;
 	.column-header {
 		color: #e74c3c;
 	}
 }
 
 .done {
+	border-color: #f39c12;
 	background-color: #fff;
-	border: 2px solid #f39c12;
 	.column-header {
 		color: #f39c12;
 	}
@@ -62,13 +199,19 @@ body {
 }
 
 .task {
+	position: relative;
 	background-color: #e0e0e0;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 50px 50px 15px 15px;
+	border-top: 20px solid #ccbaba;
 	margin-bottom: 10px;
 	cursor: grab;
 	transition: transform 0.3s ease-in-out;
 	display: flex;
+
+	&:active {
+		cursor: grabbing;
+	}
 
 	&.dragging {
 		transform: scale(1.1);
@@ -89,16 +232,76 @@ body {
 	.task-details {
 		flex: 1;
 		display: flex;
+		width: 100%;
 		flex-direction: column;
+		word-wrap: break-word;
+
+		& > * {
+			width: 100%;
+		}
+
+		.task-priority {
+			span {
+				display: inline-block;
+				padding: 5px 10px;
+				border-radius: 5px;
+				color: #fff;
+				text-transform: uppercase;
+			}
+
+			&.task-high span {
+				background-color: #e74c3c;
+			}
+
+			&.task-medium span {
+				background-color: #ffbc00;
+			}
+
+			&.task-low span {
+				background-color: #189618;
+			}
+		}
 	}
 
 	.task-title {
-		font-size: 16px;
+		font-size: 20px;
 		font-weight: bold;
-		margin-bottom: 5px;
+		margin-bottom: 15px;
 	}
 
 	.task-details-text {
 		font-size: 14px;
+		margin-bottom: 5px;
 	}
+
+	button {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: #fff;
+		width: 30px;
+		height: 30px;
+		font-weight: 700;
+		background-color: #e74c3c;
+		border: 0;
+		border-radius: 5px;
+		transition: 0.3s background-color, 0.3s color;
+
+		&:hover {
+			cursor: pointer;
+			color: #e74c3c;
+			background-color: #fff;
+		}
+	}
+}
+
+.column.done .task {
+	opacity: 0.55;
+}
+
+footer {
+	text-align: center;
+	padding: 15px;
+	background-color: #fff;
+	font-weight: 600;
 }
