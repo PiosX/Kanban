@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   background-color: #f4f4f4;
 }
@@ -10,6 +11,7 @@ body {
 .kanban-board,
 .kanban-container {
   display: flex;
+  flex: 1 1 100%;
   gap: 25px;
   height: 100%;
   padding: 20px;
